@@ -1,7 +1,3 @@
---local TackleKey <const> = GetConvar("TackleKey", 'e') 
---local TackleTime <const> = GetConvar("TackleTime", 3000)
--- local TackleAntiCheatDistanceLimit <const> = GetConvar("TackleAntiCheatDistanceLimit", 8.0)
-
 local function showNotification(msg)
 	BeginTextCommandThefeedPost('STRING')
 	AddTextComponentSubstringPlayerName(msg)
@@ -63,7 +59,7 @@ AddEventHandler('Tackle:Client:TacklePlayer', function(Tackler)
 	local tacklercoords = GetEntityCoords(GetPlayerPed(Tackler))
 	local ForwardVector = GetEntityForwardVector(Tackler)
 	
-	local distBetween = GetDistanceBetweenCoords(plrcrds.x, plrcrds.y, plrcrds.z, tacklercoords.x, tacklercoords.y, tacklercoords.z, true)
+	local distBetween = #(plrcrds - tacklercoords)
 	if distBetween <= tonumber(GetConvar("TackleAntiCheatDistanceLimit", 8.0)) then
 		showNotification('~r~' .. GetPlayerName(Tackler) .. ' ~r~tackled you!')
 		local TackleTime = GetConvar("TackleTime", 3000)
