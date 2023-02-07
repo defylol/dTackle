@@ -5,7 +5,6 @@ author 'defy#9225'
 description 'A lightweight tackle script with a basic anticheat and no dependencies'
 
 server_scripts {
-	'config.lua',
 	'server.lua'
 }
 
