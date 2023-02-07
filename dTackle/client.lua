@@ -57,19 +57,6 @@ function GetTouchedPlayers()
 	return TouchedPlayer
 end
 
-
-RegisterCommand("getloc", function(source, args, rawCommand)
-	local playerid = tonumber(args[1])
-	if GetPlayerServerId(playerid) then
-		TriggerServerEvent('Tackle:Server:TacklePlayer', source, playerid)
-		print(source)
-		showNotification("Event fired")
-	else
-		showNotification("Invalid Target")
-	end
-end, false) 
-
-
 RegisterNetEvent('Tackle:Client:TacklePlayer')
 AddEventHandler('Tackle:Client:TacklePlayer', function(Tackler)
 	local plrcrds = GetEntityCoords(GetPlayerPed())
